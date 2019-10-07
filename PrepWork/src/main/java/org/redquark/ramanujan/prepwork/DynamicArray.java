@@ -1,4 +1,4 @@
-package org.redquark.ramanujan.prepwork.dynamicarray;
+package org.redquark.ramanujan.prepwork;
 
 import java.util.Arrays;
 
