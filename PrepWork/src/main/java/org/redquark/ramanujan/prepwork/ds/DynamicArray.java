@@ -1,4 +1,4 @@
-package org.redquark.ramanujan.prepwork;
+package org.redquark.ramanujan.prepwork.ds;
 
 import java.util.Arrays;
 

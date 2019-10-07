@@ -1,4 +1,4 @@
-package org.redquark.ramanujan.prepwork;
+package org.redquark.ramanujan.prepwork.ds;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -8,9 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.NoSuchElementException;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.redquark.ramanujan.prepwork.SinglyLinkedList;
 
 /**
  * @author Anirudh Sharma
@@ -36,7 +36,7 @@ public class SinglyLinkedListTest<T> {
 
 	/**
 	 * Test method for
-	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#isEmpty()}.
+	 * {@link org.redquark.ramanujan.prepwork.ds.SinglyLinkedList#isEmpty()}.
 	 */
 	@Test
 	public void testIsEmpty() {
@@ -54,7 +54,7 @@ public class SinglyLinkedListTest<T> {
 
 	/**
 	 * Test method for
-	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#addFirst(java.lang.Object)}.
+	 * {@link org.redquark.ramanujan.prepwork.ds.SinglyLinkedList#addFirst(java.lang.Object)}.
 	 */
 	@Test
 	public void testAddFirst() {
@@ -69,7 +69,7 @@ public class SinglyLinkedListTest<T> {
 
 	/**
 	 * Test method for
-	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#getFirst()}.
+	 * {@link org.redquark.ramanujan.prepwork.ds.SinglyLinkedList#getFirst()}.
 	 */
 	@Test
 	public void testGetFirst() {
@@ -84,7 +84,7 @@ public class SinglyLinkedListTest<T> {
 
 	/**
 	 * Test method for
-	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#removeFirst()}.
+	 * {@link org.redquark.ramanujan.prepwork.ds.SinglyLinkedList#removeFirst()}.
 	 */
 	@Test
 	public void testRemoveFirst() {
@@ -101,7 +101,7 @@ public class SinglyLinkedListTest<T> {
 
 	/**
 	 * Test method for
-	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#addLast(java.lang.Object)}.
+	 * {@link org.redquark.ramanujan.prepwork.ds.SinglyLinkedList#addLast(java.lang.Object)}.
 	 */
 	@Test
 	public void testAddLast() {
@@ -118,7 +118,7 @@ public class SinglyLinkedListTest<T> {
 
 	/**
 	 * Test method for
-	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#getLast()}.
+	 * {@link org.redquark.ramanujan.prepwork.ds.SinglyLinkedList#getLast()}.
 	 */
 	@Test
 	public void testGetLast() {
@@ -141,7 +141,7 @@ public class SinglyLinkedListTest<T> {
 
 	/**
 	 * Test method for
-	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#removeLast()}.
+	 * {@link org.redquark.ramanujan.prepwork.ds.SinglyLinkedList#removeLast()}.
 	 */
 	@Test
 	public void testRemoveLast() {
@@ -161,7 +161,7 @@ public class SinglyLinkedListTest<T> {
 
 	/**
 	 * Test method for
-	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#insertAfter(java.lang.Object, java.lang.Object)}.
+	 * {@link org.redquark.ramanujan.prepwork.ds.SinglyLinkedList#insertAfter(java.lang.Object, java.lang.Object)}.
 	 */
 	@Test
 	public void testInsertAfter() {
@@ -176,7 +176,7 @@ public class SinglyLinkedListTest<T> {
 
 	/**
 	 * Test method for
-	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#insertBefore(java.lang.Object, java.lang.Object)}.
+	 * {@link org.redquark.ramanujan.prepwork.ds.SinglyLinkedList#insertBefore(java.lang.Object, java.lang.Object)}.
 	 */
 	@Test
 	public void testInsertBefore() {
@@ -200,7 +200,7 @@ public class SinglyLinkedListTest<T> {
 
 	/**
 	 * Test method for
-	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#remove(java.lang.Object)}.
+	 * {@link org.redquark.ramanujan.prepwork.ds.SinglyLinkedList#remove(java.lang.Object)}.
 	 */
 	@Test
 	public void testRemove() {
@@ -223,7 +223,7 @@ public class SinglyLinkedListTest<T> {
 
 	/**
 	 * Test method for
-	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#clear()}.
+	 * {@link org.redquark.ramanujan.prepwork.ds.SinglyLinkedList#clear()}.
 	 */
 	@Test
 	public void testClear() {
@@ -235,7 +235,7 @@ public class SinglyLinkedListTest<T> {
 
 	/**
 	 * Test method for
-	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#contains(java.lang.Object)}.
+	 * {@link org.redquark.ramanujan.prepwork.ds.SinglyLinkedList#contains(java.lang.Object)}.
 	 */
 	@Test
 	public void testContains() {
@@ -246,7 +246,7 @@ public class SinglyLinkedListTest<T> {
 
 	/**
 	 * Test method for
-	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#get(int)}.
+	 * {@link org.redquark.ramanujan.prepwork.ds.SinglyLinkedList#get(int)}.
 	 */
 	@Test
 	public void testGet() {
@@ -266,7 +266,7 @@ public class SinglyLinkedListTest<T> {
 
 	/**
 	 * Test method for
-	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#reverse()}.
+	 * {@link org.redquark.ramanujan.prepwork.ds.SinglyLinkedList#reverse()}.
 	 */
 	@Test
 	public void testReverse() {
@@ -277,7 +277,7 @@ public class SinglyLinkedListTest<T> {
 
 	/**
 	 * Test method for
-	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#deepCopy()}.
+	 * {@link org.redquark.ramanujan.prepwork.ds.SinglyLinkedList#deepCopy()}.
 	 */
 	@Test
 	public void testDeepCopy() {
@@ -287,7 +287,7 @@ public class SinglyLinkedListTest<T> {
 
 	/**
 	 * Test method for
-	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#size()}.
+	 * {@link org.redquark.ramanujan.prepwork.ds.SinglyLinkedList#size()}.
 	 */
 	@Test
 	public void testSize() {
@@ -309,7 +309,7 @@ public class SinglyLinkedListTest<T> {
 	
 	/**
 	 * Test method for
-	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#iterator()}.
+	 * {@link org.redquark.ramanujan.prepwork.ds.SinglyLinkedList#iterator()}.
 	 */
 	@Test
 	public void testIterator() {
@@ -329,6 +329,11 @@ public class SinglyLinkedListTest<T> {
 		assertThrows(UnsupportedOperationException.class, () -> {
 			list.iterator().remove();
 		});
+	}
+	
+	@After
+	public void tearDown() {
+		list = null;
 	}
 
 }
