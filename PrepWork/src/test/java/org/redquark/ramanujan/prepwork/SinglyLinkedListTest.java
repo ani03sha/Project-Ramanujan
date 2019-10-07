@@ -287,6 +287,28 @@ public class SinglyLinkedListTest<T> {
 
 	/**
 	 * Test method for
+	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#size()}.
+	 */
+	@Test
+	public void testSize() {
+		// Test case to check the size of the list
+		assertEquals(list.size(), Integer.valueOf(4));
+		// Adding some elements and then determine size
+		list.addLast(Integer.valueOf(5));
+		list.addLast(Integer.valueOf(6));
+		assertEquals(list.size(), Integer.valueOf(6));
+		// Removing some elements and then determine size
+		list.removeLast();
+		list.removeLast();
+		list.removeLast();
+		assertEquals(list.size(), Integer.valueOf(3));
+		// Clear the list
+		list.clear();
+		assertEquals(list.size(), Integer.valueOf(0));
+	}
+	
+	/**
+	 * Test method for
 	 * {@link org.redquark.ramanujan.prepwork.SinglyLinkedList#iterator()}.
 	 */
 	@Test

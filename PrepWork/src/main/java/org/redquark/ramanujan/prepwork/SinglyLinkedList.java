@@ -332,6 +332,28 @@ public class SinglyLinkedList<T> implements Iterable<T> {
 	}
 	
 	/**
+	 * This method returns the size of the linked list
+	 */
+	public int size() {
+		// Base condition - head is null
+		if(head == null) {
+			return 0;
+		}
+		// Counter to track the size
+		int count = 1;
+		// Getting reference of the head
+		Node<T> temp = head;
+		// Iterate through the linked list
+		while(temp.next != null) {
+			// Moving the pointer one node ahead
+			temp = temp.next;
+			// Increment the counter by 1
+			count++;
+		}
+		return count;
+	}
+	
+	/**
 	 * This method returns the iterator on the SinglyLinkedList
 	 * This internally returns the instance of an inner class SinglyLinkedListIterator
 	 */
