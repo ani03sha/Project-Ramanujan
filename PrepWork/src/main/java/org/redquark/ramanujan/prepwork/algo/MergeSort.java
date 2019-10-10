@@ -9,7 +9,7 @@ public class MergeSort {
 	public <T extends Comparable<T>> T[] sort(T[] arr, int l, int r) {
 		if (l < r) {
 			// Find the mid point of l and r
-			int m = (l + r) / 2;
+			int m = l + (r - l) / 2;
 
 			// Recursively sort first and second halves
 			sort(arr, l, m);
