@@ -56,10 +56,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	}
 
 	/**
-	 * Helper method to search the key recursively
-	 * 1. First we will check the key at the root. If found, return
-	 * 2. Then we compare the key with data at root. If smaller, search in left subtree
-	 * 3. If greater, then search in the right subtree
+	 * Helper method to search the key recursively 1. First we will check the key at
+	 * the root. If found, return 2. Then we compare the key with data at root. If
+	 * smaller, search in left subtree 3. If greater, then search in the right
+	 * subtree
 	 */
 	private boolean search(Node<T> item, T key) {
 		// If the root is null, which means there is no tree
@@ -73,21 +73,22 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 			return search(item.right, key); // Then we will search in the right subtree
 		}
 	}
-	
+
 	/**
-	 * This method inserts the specified data at the appropriate position in the BST. 
-	 * This method internally uses a private helper method to insert data
+	 * This method inserts the specified data at the appropriate position in the
+	 * BST. This method internally uses a private helper method to insert data
 	 */
 	public void insert(T data) {
 		root = insert(root, data);
 	}
-	
+
 	/**
-	 * Helper method to insert a node at the appropriate position in the BST.
-	 * 1. Check if the root is null, then we will add the new node as the root of the tree
-	 * 2. If the item to be added is at the root, then we will do nothing
-	 * 3. If the item to be added is smaller than the data at root then we will move towards left subtree
-	 * 4. If the item to be added is greater than the data at root then we will move towards right subtree
+	 * Helper method to insert a node at the appropriate position in the BST. 1.
+	 * Check if the root is null, then we will add the new node as the root of the
+	 * tree 2. If the item to be added is at the root, then we will do nothing 3. If
+	 * the item to be added is smaller than the data at root then we will move
+	 * towards left subtree 4. If the item to be added is greater than the data at
+	 * root then we will move towards right subtree
 	 */
 	private Node<T> insert(Node<T> item, T data) {
 		// Base condition - if root is null, which means there is no tree and we will
@@ -110,26 +111,26 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 
 		return item;
 	}
-	
+
 	/**
-	 * This method delete the specified data from the BST.
-	 * This method internally uses a helper method to delete data
+	 * This method delete the specified data from the BST. This method internally
+	 * uses a helper method to delete data
 	 */
 	public void delete(T data) {
 		root = delete(root, data);
 	}
-	
+
 	/**
 	 * Helper method which is used to delete the specified data from the list.
 	 * Deletion strategy is the following: replace the node being deleted with the
 	 * largest node in the left subtree and then delete that largest node. By
 	 * symmetry, the node being deleted can be swapped with the smallest node is the
-	 * right subtree. 
+	 * right subtree.
 	 * 
-	 * 1. Check if the root is null, which means there is no tree and throw an exception 
-	 * 2. Check if the item to be deleted is present in the left subtree 
-	 * 3. Check if the item to be deleted is present in the right subtree 
-	 * 4. If both conditions fail, then we delete the rightmost node in the left subtree
+	 * 1. Check if the root is null, which means there is no tree and throw an
+	 * exception 2. Check if the item to be deleted is present in the left subtree
+	 * 3. Check if the item to be deleted is present in the right subtree 4. If both
+	 * conditions fail, then we delete the rightmost node in the left subtree
 	 */
 	private Node<T> delete(Node<T> item, T data) {
 		// Base condition - root is null which means there is no tree to delete from
@@ -153,7 +154,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		}
 		return item;
 	}
-	
+
 	/**
 	 * Helper method to get the rightmost node in the left subtree
 	 */
@@ -163,102 +164,102 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		}
 		return item.data;
 	}
-	
+
 	/**
-	 * This method returns the pre-order traversal of the BST.
-	 * This method internally uses a helper method for recursion.
-	 * 1. Traverse the parent
-	 * 2. Traverse the left subtree of the above parent recursively
-	 * 3. Traverse the right subtree of the above parent recursively
+	 * This method returns the pre-order traversal of the BST. This method
+	 * internally uses a helper method for recursion. 1. Traverse the parent 2.
+	 * Traverse the left subtree of the above parent recursively 3. Traverse the
+	 * right subtree of the above parent recursively
 	 */
 	public String preOrderTraversal() {
-		return preOrder(root);
+		// StringBuilder instance that will store the result of the preorder traversal
+		StringBuilder result = new StringBuilder();
+
+		return preOrder(root, result);
 	}
 
 	/**
 	 * Helper method for the pre-order traversal
 	 */
-	private String preOrder(Node<T> item) {
-		// StringBuffer instance that will store the data of nodes traversed
-		StringBuffer result = new StringBuffer();
+	private String preOrder(Node<T> item, StringBuilder result) {
 		// If root is null then there is no tree hence this condition
 		if (item != null) {
 			// Traversing the root node first
 			result.append(item.data).append(" ");
 			// Traversing the left subtree of current node
-			preOrder(item.left);
+			preOrder(item.left, result);
 			// Traversing the right subtree of current node
-			preOrder(item.right);
+			preOrder(item.right, result);
 		}
 		// Return the String equivalent of the node traversed
 		return result.toString();
 	}
-	
+
 	/**
-	 * This method returns the in-order traversal of the BST.
-	 * This method internally uses a helper method for recursion.
-	 * 1. Traverse the left subtree of the parent recursively
-	 * 2. Traverse the parent
-	 * 3. Traverse the right subtree of the parent recursively
+	 * This method returns the in-order traversal of the BST. This method internally
+	 * uses a helper method for recursion. 1. Traverse the left subtree of the
+	 * parent recursively 2. Traverse the parent 3. Traverse the right subtree of
+	 * the parent recursively
 	 */
 	public String inOrderTraversal() {
-		return inOrder(root);
+		// StringBuilder instance that will store the data of nodes traversed
+		StringBuilder result = new StringBuilder();
+
+		return inOrder(root, result);
 	}
 
 	/**
 	 * Helper method for the in-order traversal
 	 */
-	private String inOrder(Node<T> item) {
-		// StringBuffer instance that will store the data of nodes traversed
-		StringBuffer result = new StringBuffer();
+	private String inOrder(Node<T> item, StringBuilder result) {
 		// If root is null then there is no tree hence this condition
 		if (item != null) {
 			// Traversing the left subtree of current node
-			inOrder(item.left);
+			inOrder(item.left, result);
 			// Traversing the root node in between
 			result.append(item.data).append(" ");
 			// Traversing the right subtree of current node
-			inOrder(item.right);
+			inOrder(item.right, result);
 		}
 		// Return the String equivalent of the node traversed
 		return result.toString();
 	}
-	
+
 	/**
-	 * This method returns the in-order traversal of the BST.
-	 * This method internally uses a helper method for recursion.
-	 * 1. Traverse the left subtree of the parent recursively
-	 * 2. Traverse the right subtree of the parent recursively
-	 * 3. Traverse the parent
+	 * This method returns the in-order traversal of the BST. This method internally
+	 * uses a helper method for recursion. 1. Traverse the left subtree of the
+	 * parent recursively 2. Traverse the right subtree of the parent recursively 3.
+	 * Traverse the parent
 	 */
 	public String postOrderTraversal() {
-		return postOrder(root);
+		// StringBuilder instance that will store the data of nodes traversed
+		StringBuilder result = new StringBuilder();
+
+		return postOrder(root, result);
 	}
 
 	/**
 	 * Helper method for the post-order traversal
 	 */
-	private String postOrder(Node<T> item) {
-		// StringBuffer instance that will store the data of nodes traversed
-		StringBuffer result = new StringBuffer();
+	private String postOrder(Node<T> item, StringBuilder result) {
 		// If root is null then there is no tree hence this condition
 		if (item != null) {
 			// Traversing the left subtree of current node
-			postOrder(item.left);
+			postOrder(item.left, result);
 			// Traversing the right subtree of current node
-			postOrder(item.right);
+			postOrder(item.right, result);
 			// Traversing the root node last
 			result.append(item.data).append(" ");
 		}
 		// Return the String equivalent of the node traversed
 		return result.toString();
 	}
-	
+
 	/**
-	 * This method returns the level order traversal of BST.
-	 * 1. First we find the height of the tree as there will be these many levels
-	 * 2. Then we iterate through height number of times i.e. for each level
-	 * 3. Then we call the helper method that will do traversal for that level
+	 * This method returns the level order traversal of BST. 1. First we find the
+	 * height of the tree as there will be these many levels 2. Then we iterate
+	 * through height number of times i.e. for each level 3. Then we call the helper
+	 * method that will do traversal for that level
 	 */
 	public String levelOrderTraversal() {
 		// StringBuffer instance that will store the data of nodes traversed
@@ -273,12 +274,12 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		// Return the string representation of result
 		return result.toString();
 	}
-	
+
 	/**
-	 * Helper method to traverse each node at the specified level
-	 * 1. If root is null then there is no tree, we cannot do anything
-	 * 2. If there is only one level i.e. the root level then we print it
-	 * 3. Perform step 1 and 2 for each left and right subtree
+	 * Helper method to traverse each node at the specified level 1. If root is null
+	 * then there is no tree, we cannot do anything 2. If there is only one level
+	 * i.e. the root level then we print it 3. Perform step 1 and 2 for each left
+	 * and right subtree
 	 */
 	private void levelOrder(Node<T> item, int level, StringBuffer result) {
 		// Base condition - if the root is null then we do not have to do anything
@@ -297,18 +298,17 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	}
 
 	/**
-	 * This method returns the height of the BST.
-	 * This method internally uses a helper method to find out the height
+	 * This method returns the height of the BST. This method internally uses a
+	 * helper method to find out the height
 	 */
 	public int height() {
 		return height(root);
 	}
-	
+
 	/**
-	 * Helper method to find out the height recursively
-	 * 1. If root is null then height is 0
-	 * 2. Else, we will find the max of heights of left and right subtrees
-	 * 3. Add 1 for the root node to the above result
+	 * Helper method to find out the height recursively 1. If root is null then
+	 * height is 0 2. Else, we will find the max of heights of left and right
+	 * subtrees 3. Add 1 for the root node to the above result
 	 */
 	private int height(Node<T> item) {
 		// Base condition - if root is null then there is no tree
@@ -321,40 +321,39 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 			return 1 + Math.max(height(item.left), height(item.right));
 		}
 	}
-	
+
 	/**
-	 * This method counts the number of leaves in a BST.
-	 * A leaf is a node which has no child.
-	 * This method uses a helper method to count the leaves
+	 * This method counts the number of leaves in a BST. A leaf is a node which has
+	 * no child. This method uses a helper method to count the leaves
 	 */
 	public int countLeaves() {
 		return countLeaves(root);
 	}
 
 	/**
-	 * Helper overloaded method to count the leaves
-	 * 1. If the root is null then the leaves are zero
-	 * 2. If there is only root in the tree, then the count will be one - the root itself
-	 * 3. Count leaves of left and right subtree recursively and add them
+	 * Helper overloaded method to count the leaves 1. If the root is null then the
+	 * leaves are zero 2. If there is only root in the tree, then the count will be
+	 * one - the root itself 3. Count leaves of left and right subtree recursively
+	 * and add them
 	 */
 	private int countLeaves(Node<T> item) {
 		// Base condition - if root is null then the leaves are zero
-		if(item == null) {
+		if (item == null) {
 			return 0;
-		} else if(item.left == null && item.right == null) { // If there is only root
+		} else if (item.left == null && item.right == null) { // If there is only root
 			return 1;
 		} else {
-			// Recursively count the leaves of left and right subtrees and return the sum of both
+			// Recursively count the leaves of left and right subtrees and return the sum of
+			// both
 			return countLeaves(item.left) + countLeaves(item.right);
 		}
 	}
-	
+
 	/**
-	 * The width of a BST is the maximum number of nodes at one level.
-	 * This method returns the width of a BST.
-	 * 1. Find the height of the tree which is equal to the number of levels present in the tree
-	 * 2. Iterate for each level
-	 * 3. Find the width of each level and compare it with the current maximum
+	 * The width of a BST is the maximum number of nodes at one level. This method
+	 * returns the width of a BST. 1. Find the height of the tree which is equal to
+	 * the number of levels present in the tree 2. Iterate for each level 3. Find
+	 * the width of each level and compare it with the current maximum
 	 */
 	public int width() {
 		// Variable to store width
@@ -374,10 +373,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	}
 
 	/**
-	 * Helper method which returns the width of each level
-	 * 1. If root is null then there is no tree. Hence width will be zero
-	 * 2. if there are no levels except root then the width will be 1
-	 * 3. Else we will add the widths of left and right subtrees recursively
+	 * Helper method which returns the width of each level 1. If root is null then
+	 * there is no tree. Hence width will be zero 2. if there are no levels except
+	 * root then the width will be 1 3. Else we will add the widths of left and
+	 * right subtrees recursively
 	 */
 	private int width(Node<T> item, int depth) {
 		// Base condition - if root is null then there is no tree
@@ -390,25 +389,23 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 			return width(item.left, depth--) + width(item.right, depth--);
 		}
 	}
-	
+
 	/**
-	 * The diameter of a tree is the number of nodes on the longest path between two leaves in the tree.
-	 * This method uses a helper method to find the diameter
+	 * The diameter of a tree is the number of nodes on the longest path between two
+	 * leaves in the tree. This method uses a helper method to find the diameter
 	 */
 	public int diameter() {
 		return diameter(root);
 	}
 
 	/**
-	 * Helper method to find the diameter of a BST
-	 * 1. If root is null then there is no tree
-	 * 2. Find the length if path goes through the root
-	 * 3. Find the length if path does not goes through the root
-	 * 3. Return the maximum of two
+	 * Helper method to find the diameter of a BST 1. If root is null then there is
+	 * no tree 2. Find the length if path goes through the root 3. Find the length
+	 * if path does not goes through the root 3. Return the maximum of two
 	 */
 	private int diameter(Node<T> item) {
 		// Base condition - if root is null then there is no tree
-		if(item == null) {
+		if (item == null) {
 			return 0;
 		}
 		// If the path goes through the root
@@ -425,7 +422,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	public void restore(T[] preorder, T[] inorder) {
 		root = restore(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
 	}
-	
+
 	/**
 	 * Helper method to restore the tree from given preorder and inorder arrays
 	 */
@@ -450,7 +447,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * This method will return the deep copy of the existing BST
 	 */
@@ -458,7 +455,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		// Creating a reference of the BST
 		BinarySearchTree<T> twin = null;
 		// Check for the nullability of comparator
-		if(comparator == null) {
+		if (comparator == null) {
 			twin = new BinarySearchTree<>();
 		} else {
 			twin = new BinarySearchTree<>(comparator);
@@ -468,13 +465,13 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		// Return the clone of the original tree
 		return twin;
 	}
-	
+
 	/**
 	 * Helper method for creating nodes of the clone recursively
 	 */
 	private Node<T> clone(Node<T> item) {
 		// Base condition - if root is null then there is no BST
-		if(item == null) {
+		if (item == null) {
 			return null;
 		} else {
 			// Create a new node with the data from the original tree
@@ -482,16 +479,16 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 			return new Node<T>(item.data, clone(item.left), clone(item.right));
 		}
 	}
-	
+
 	/**
-	 * Overridden method of default toString.
-	 * This method returns the String representation of the BST
+	 * Overridden method of default toString. This method returns the String
+	 * representation of the BST
 	 */
 	public String toString() {
 		// StringBuffer instance to store data of the BST
 		StringBuffer result = new StringBuffer();
 		// Iterate through the tree
-		for(T data : this) {
+		for (T data : this) {
 			result.append(data.toString()).append(" ");
 		}
 		// Return the String representation of the tree
@@ -499,8 +496,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	}
 
 	/**
-	 * Iterator of the BST.
-	 * This will use an inner class for its operations
+	 * Iterator of the BST. This will use an inner class for its operations
 	 */
 	@Override
 	public Iterator<T> iterator() {
@@ -542,7 +538,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 			return data.toString();
 		}
 	}
-	
+
 	/******************************
 	 * The Iterator class
 	 ******************************/
