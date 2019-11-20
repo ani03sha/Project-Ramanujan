@@ -123,7 +123,11 @@ class BinarySearchTreeTest {
 	 */
 	@Test
 	void testHeight() {
-		fail("Not yet implemented");
+		assertEquals(3, bst.height());
+		bst.insert(2);
+		bst.insert(9);
+		bst.insert(11);
+		assertEquals(5, bst.height());
 	}
 
 	/**
@@ -132,7 +136,15 @@ class BinarySearchTreeTest {
 	 */
 	@Test
 	void testCountLeaves() {
-		fail("Not yet implemented");
+		assertEquals(3, bst.countLeaves());
+		bst.insert(2);
+		bst.insert(9);
+		bst.insert(11);
+		assertEquals(3, bst.countLeaves());
+		bst.delete(11);
+		assertEquals(3, bst.countLeaves());
+		bst.insert(-1);
+		assertEquals(4, bst.countLeaves());
 	}
 
 	/**
@@ -141,7 +153,7 @@ class BinarySearchTreeTest {
 	 */
 	@Test
 	void testWidth() {
-		fail("Not yet implemented");
+		assertEquals(3, bst.width());
 	}
 
 	/**

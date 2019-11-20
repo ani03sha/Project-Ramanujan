@@ -417,7 +417,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	}
 
 	/**
-	 * This method restores the original tree if its preorder and inorder ar given
+	 * This method restores the original tree if its preorder and inorder are given
 	 */
 	public void restore(T[] preorder, T[] inorder) {
 		root = restore(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
