@@ -1,6 +1,5 @@
 package org.redquark.ramanujan.prepwork.ds;
 
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Stack;
 
@@ -15,36 +14,18 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	// Root of the BST
 	private Node<T> root;
 
-	// Comparator object
-	private Comparator<T> comparator;
-
 	/**
 	 * No argument constructor
 	 */
 	public BinarySearchTree() {
 		this.root = null;
-		this.comparator = null;
-	}
-
-	/**
-	 * Constructor with the Comparator object
-	 */
-	public BinarySearchTree(Comparator<T> comparator) {
-		this.root = null;
-		this.comparator = comparator;
 	}
 
 	/**
 	 * Internal helper method to compare the two nodes of a tree
 	 */
 	private int compare(T x, T y) {
-		// If custom comparator is null, then we will use the default comparison
-		if (comparator == null) {
-			return x.compareTo(y);
-		} else {
-			// Else, we will use the custom compare method
-			return comparator.compare(x, y);
-		}
+		return x.compareTo(y);
 	}
 
 	/**
@@ -267,7 +248,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		// Getting the height of the tree
 		int h = height();
 		// Iterate h-number of times
-		for (int i = 0; i < h; i++) {
+		for (int i = 1; i <= h; i++) {
 			// This method will print each level
 			levelOrder(root, i, result);
 		}
@@ -283,7 +264,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	 */
 	private void levelOrder(Node<T> item, int level, StringBuffer result) {
 		// Base condition - if the root is null then we do not have to do anything
-		if (root == null) {
+		if (item == null) {
 			return;
 		}
 		// For the root level
@@ -291,9 +272,9 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 			result.append(item.data).append(" ");
 		}
 		// For the levels below root
-		if (level > 1) {
-			levelOrder(item.left, level--, result);
-			levelOrder(item.right, level--, result);
+		else if (level > 1) {
+			levelOrder(item.left, level - 1, result);
+			levelOrder(item.right, level - 1, result);
 		}
 	}
 
@@ -358,11 +339,17 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	public int width() {
 		// Variable to store width
 		int max = 0;
+		// Height of the tree
+		int height = height();
+		// Current reference of the node
+		Node<T> node = root;
+		// Variable to store width of current level
+		int temp;
 		// Iterate through height of the tree. This is done to find the width of each
 		// level
-		for (int i = 0; i < height(); i++) { // Each iteration represents each level
+		for (int i = 1; i <= height; i++) { // Each iteration represents each level
 			// Find the width of the current level
-			int temp = width(root, i);
+			temp = width(node, i);
 			// Find the maximum between max and width of current level
 			if (temp > max) {
 				max = temp;
@@ -382,11 +369,14 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		// Base condition - if root is null then there is no tree
 		if (item == null) {
 			return 0;
-		} else if (depth == 0) { // If there are no levels except one
+		}
+
+		// If there are no levels except one
+		if (depth == 1) {
 			return 1;
 		} else {
 			// Return the sum of widths of left and right subtree
-			return width(item.left, depth--) + width(item.right, depth--);
+			return width(item.left, depth - 1) + width(item.right, depth - 1);
 		}
 	}
 
@@ -401,7 +391,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	/**
 	 * Helper method to find the diameter of a BST 1. If root is null then there is
 	 * no tree 2. Find the length if path goes through the root 3. Find the length
-	 * if path does not goes through the root 3. Return the maximum of two
+	 * if path does not goes through the root 4. Return the maximum of two
 	 */
 	private int diameter(Node<T> item) {
 		// Base condition - if root is null then there is no tree
@@ -409,7 +399,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 			return 0;
 		}
 		// If the path goes through the root
-		int a = height(item.left) + height(item.right) + 3;
+		int a = height(item.left) + height(item.right) + 1;
 		// If the path does not go through the root
 		int b = Math.max(diameter(item.left), diameter(item.right));
 		// Return the maximum of two values
@@ -417,49 +407,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	}
 
 	/**
-	 * This method restores the original tree if its preorder and inorder are given
-	 */
-	public void restore(T[] preorder, T[] inorder) {
-		root = restore(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
-	}
-
-	/**
-	 * Helper method to restore the tree from given preorder and inorder arrays
-	 */
-	private Node<T> restore(T[] preorder, int preL, int preR, T[] inorder, int inL, int inR) {
-		// Check if the left of preorder array is smaller or equals to than right of
-		// preorder array
-		if (preL <= preR) {
-			// Counter
-			int count = 0;
-			// Find the root in the inorder array
-			while (preorder[preL] != inorder[inL + count]) {
-				count++;
-			}
-			// Create a new node as the root of the new tree to be constructed
-			Node<T> temp = new Node<T>(preorder[preL]);
-			// Recursive calls to this method for creating left and right subtrees
-			temp.left = restore(preorder, preL + 1, preL + count, inorder, inL, inL + count - 1);
-			temp.right = restore(preorder, preL + count + 1, preR, inorder, inL + count + 1, inR);
-			// Return the root of newly created tree
-			return temp;
-		} else {
-			return null;
-		}
-	}
-
-	/**
 	 * This method will return the deep copy of the existing BST
 	 */
 	public BinarySearchTree<T> clone() {
 		// Creating a reference of the BST
-		BinarySearchTree<T> twin = null;
-		// Check for the nullability of comparator
-		if (comparator == null) {
-			twin = new BinarySearchTree<>();
-		} else {
-			twin = new BinarySearchTree<>(comparator);
-		}
+		BinarySearchTree<T> twin = new BinarySearchTree<>();
 		// Creating the root of clone
 		twin.root = clone(root);
 		// Return the clone of the original tree
@@ -529,13 +481,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		 */
 		public Node(T data) {
 			this(data, null, null);
-		}
-
-		/**
-		 * Overridden toString method
-		 */
-		public String toString() {
-			return data.toString();
 		}
 	}
 
