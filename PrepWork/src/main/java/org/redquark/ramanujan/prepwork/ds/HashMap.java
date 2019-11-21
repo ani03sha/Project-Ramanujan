@@ -21,8 +21,9 @@ public class HashMap<K, V> {
 	 */
 	@SuppressWarnings("unchecked")
 	public HashMap() {
+		initalCapacity = DEFAULT_CAPACITY;
 		// Creating a new array with the default capacity
-		table = new Entry[DEFAULT_CAPACITY];
+		table = new Entry[initalCapacity];
 	}
 
 	/**
@@ -165,8 +166,8 @@ public class HashMap<K, V> {
 				}
 				current = current.next;
 			}
+			return false;
 		}
-		return false;
 	}
 
 	/**
@@ -177,13 +178,15 @@ public class HashMap<K, V> {
 		int count = 0;
 		// Loop for all the buckets and their corresponding linked lists if any
 		for (int i = 0; i < table.length; i++) {
-			int nodeCount = 0;
-			for (Entry<K, V> e = table[i]; e.next != null; e = e.next) {
-				nodeCount++;
+			if (table[i] != null) {
+				int nodeCount = 0;
+				for (Entry<K, V> e = table[i]; e.next != null; e = e.next) {
+					nodeCount++;
+				}
+				// Add the nodes to the total count
+				count += nodeCount;
+				count++;
 			}
-			// Add the nodes to the total count
-			count += nodeCount;
-			count++;
 		}
 		return count;
 	}
