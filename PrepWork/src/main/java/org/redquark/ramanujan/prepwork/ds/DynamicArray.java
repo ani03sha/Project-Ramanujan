@@ -1,7 +1,5 @@
 package org.redquark.ramanujan.prepwork.ds;
 
-import java.util.Arrays;
-
 /**
  * This class deals with all the operations of a dynamic array like add, remove,
  * resize etc.
@@ -10,7 +8,7 @@ import java.util.Arrays;
  */
 public class DynamicArray {
 
-	private int[] array; // The dynamic array in picture
+	public int[] array; // The dynamic array in picture
 	private int count; // This variable will deal with the number of elements added by a user
 	private int size; // The size of the array
 
@@ -87,7 +85,7 @@ public class DynamicArray {
 	 * This method will double the size of array and copy old array into a new
 	 * bigger array
 	 */
-	public void growSize() {
+	private void growSize() {
 		int[] temp = null; // A temporary array to handle the intermediate operation of copying elements
 		if (count == size) {
 			// Create a new array with double the present size
@@ -103,73 +101,4 @@ public class DynamicArray {
 			size = size * 2;
 		}
 	}
-
-	/**
-	 * This method shrinks the array to free up unnecessary held memory
-	 */
-	public void shrinkSize() {
-		int[] temp = null; // A temporary array to handle the intermediate operation of copying elements
-		if (count > 0) {
-			// The temp should be the count size array because only the "count" number of
-			// elements are present in the original array
-			temp = new int[count];
-			for (int i = 0; i < count; i++) {
-				temp[i] = array[i];
-			}
-			size = count;
-			// Assign temp to original array again - Rest memory spaces will be garbage
-			// collected
-			array = temp;
-		}
-	}
-
-	public static void main(String[] args) {
-
-		DynamicArray da = new DynamicArray();
-
-		// Adding some elements in the array
-		da.add(1);
-		da.add(2);
-		da.add(3);
-		da.add(4);
-		da.add(5);
-		da.add(6);
-		da.add(7);
-		da.add(8);
-		da.add(9);
-		da.add(10);
-		
-		// Original array
-		System.out.println("Original array: " + Arrays.toString(da.array));
-		System.out.println("Original array [size]: " + da.size);
-		System.out.println("Original array [count]: " + da.count);
-		
-		// Shrink size of array
-		da.shrinkSize();
-		System.out.println("After shrinking: " + Arrays.toString(da.array));
-		System.out.println("After shrinking [size]: " + da.size);
-		System.out.println("After shrinking [count]: " + da.count);
-		
-		// Add element at index 1
-		da.addAt(1, 11);
-		System.out.println("After adding element at index 1: " + Arrays.toString(da.array));
-		System.out.println("After adding element at index 1 [size]: " + da.size);
-		System.out.println("After adding element at index 1 [count]: " + da.count);
-		
-		// Delete last element
-		da.remove();
-		System.out.println("After deleting last element: " + Arrays.toString(da.array));
-		System.out.println("After deleting last element [size]: " + da.size);
-		System.out.println("After deleting last element [count]: " + da.count);
-		
-		// Delete element at index 1
-		da.removeAt(1);
-		System.out.println("After deleting last element at index 1: " + Arrays.toString(da.array));
-		System.out.println("After deleting last element at index 1 [size]: " + da.size);
-		System.out.println("After deleting last element at index 1 [count]: " + da.count);
-		
-		// Finally shrinking size
-		da.shrinkSize();
-	}
-
 }
