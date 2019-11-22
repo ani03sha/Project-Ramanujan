@@ -92,7 +92,7 @@ public class BinaryMinHeap<T extends Comparable<T>> {
 			doubleSize();
 		}
 		// Inserts a new item to the end of the array
-		int position = size++;
+		int position = ++size;
 		// Percolate up
 		for (; position > 1 && item.compareTo(heapArray[position / 2]) < 0; position = position / 2) {
 			heapArray[position] = heapArray[position / 2];
@@ -109,14 +109,14 @@ public class BinaryMinHeap<T extends Comparable<T>> {
 		// Copy all the elements of the old heapArray to the new heapArray
 		System.arraycopy(old, 1, heapArray, 1, size);
 	}
-
+	
+	
 	/**
-	 * Overridden toString method to return the String representation of the
-	 * elements stored in the heap
+	 * Overridden toString method to return the String representation of the elements stored in the heap
 	 */
 	public String toString() {
 		StringBuilder result = new StringBuilder();
-		for (int i = 1; i <= size; i++) {
+		for(int i = 1; i <= size; i++) {
 			result.append(heapArray[i]).append(" ");
 		}
 		return result.toString();
