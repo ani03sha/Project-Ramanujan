@@ -104,7 +104,7 @@ public class Trie<T> {
 			} else {
 				// Decrement the counter by 1
 				child.count--;
-				return;
+				current = child;
 			}
 		}
 		// Set the end to the false
