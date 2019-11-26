@@ -99,7 +99,7 @@ public class Trie<T> {
 			// Check if the count of the children of current node is 1
 			if (child.count == 1) {
 				// Remove the node
-				current.children.remove(c);
+				current.children.remove(child);
 				return;
 			} else {
 				// Decrement the counter by 1
