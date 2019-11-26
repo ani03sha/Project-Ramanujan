@@ -6,13 +6,13 @@ package org.redquark.ramanujan.prepwork.algo;
  * @author Anirudh Sharma
  *
  */
-public class BinarySearch<T extends Comparable<T>> {
+public class BinarySearch {
 
 	/**
 	 * This method returns the index of the key, if present in the given array. If
 	 * the key is not present, it returns -1.
 	 */
-	public int search(T[] a, T key) {
+	public <T extends Comparable<T>> int search(T[] a, T key) {
 		// Lower index
 		int left = 0;
 		// Higher index
