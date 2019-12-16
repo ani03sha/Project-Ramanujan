@@ -1,6 +1,7 @@
 package org.redquark.ramanujan.ps.arrays;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.Arrays;
 
@@ -29,10 +30,7 @@ class Arrays001_FindPairWithGivenSumTest {
 
 		a = new int[] {};
 		sum = 10;
-		expected = new int[] { 0, 0 };
-		actual = findPair.findPair(actual, sum);
-		Arrays.sort(actual);
-		assertArrayEquals(expected, actual);
+		assertNull(findPair.findPair(a, sum));
 
 		a = new int[] { 4, 5, 9, 1, 3, 10 };
 		sum = 21;
