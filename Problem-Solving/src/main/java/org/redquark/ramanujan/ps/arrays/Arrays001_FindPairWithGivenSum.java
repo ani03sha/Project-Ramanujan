@@ -1,6 +1,8 @@
 package org.redquark.ramanujan.ps.arrays;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -40,5 +42,43 @@ public class Arrays001_FindPairWithGivenSum {
 		}
 
 		return pair;
+	}
+
+	/**
+	 * This method returns the list of pair of indexes of all those numbers in an
+	 * array whose sum is equal to the given sum
+	 */
+	public List<Integer[]> findAllPairs(int[] a, int sum) {
+
+		// This list will store all the pairs having the given sum
+		List<Integer[]> pairs = new ArrayList<>();
+		// This array will store the indexes of the two numbers whose sum is equal to
+		// the given sum
+		Integer[] pair;
+
+		// Base condition - if there are not enough elements to add, return null
+		if (a.length < 2) {
+			return null;
+		}
+
+		// Map that will store the difference of the sum and the current element as the
+		// key and index as the value
+		Map<Integer, Integer> pairDifference = new HashMap<>();
+
+		// Loop through the entire array
+		for (int i = 0; i < a.length; i++) {
+			// Difference between the sum and the current element
+			int difference = sum - a[i];
+			// Check if the difference is already present in the map
+			if (pairDifference.containsKey(difference)) {
+				pair = new Integer[2];
+				pair[0] = pairDifference.get(difference);
+				pair[1] = i;
+				pairs.add(pair);
+			} else {
+				pairDifference.put(a[i], i);
+			}
+		}
+		return pairs;
 	}
 }
