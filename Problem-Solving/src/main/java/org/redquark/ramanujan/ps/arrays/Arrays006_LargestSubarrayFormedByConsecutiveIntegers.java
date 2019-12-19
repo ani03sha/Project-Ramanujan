@@ -4,6 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * Given an array of integers, find length of the longest subarray which
+ * contains numbers that can be arranged in a continuous sequence.
+ * 
  * @author Anirudh Sharma
  *
  */
