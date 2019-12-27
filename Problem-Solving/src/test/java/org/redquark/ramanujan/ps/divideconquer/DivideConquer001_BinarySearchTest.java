@@ -21,6 +21,12 @@ class DivideConquer001_BinarySearchTest {
 		int[] a = new int[] { 10, 30, 50, 70, 90, 110, 130, 150 };
 		int key = 50;
 		assertEquals(2, search.searchIteratively(a, key));
+
+		key = 150;
+		assertEquals(7, search.searchIteratively(a, key));
+
+		key = 60;
+		assertEquals(-1, search.searchIteratively(a, key));
 	}
 
 	/**
@@ -32,6 +38,12 @@ class DivideConquer001_BinarySearchTest {
 		int[] a = new int[] { 10, 30, 50, 70, 90, 110, 130, 150 };
 		int key = 50;
 		assertEquals(2, search.searchRecursively(a, key, 0, a.length - 1));
+
+		key = 150;
+		assertEquals(7, search.searchIteratively(a, key));
+
+		key = 60;
+		assertEquals(-1, search.searchIteratively(a, key));
 	}
 
 }
