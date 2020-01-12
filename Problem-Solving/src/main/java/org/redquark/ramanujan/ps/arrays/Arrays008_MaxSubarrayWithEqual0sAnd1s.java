@@ -45,5 +45,6 @@ public class Arrays008_MaxSubarrayWithEqual0sAnd1s {
 		int startIndex = endIndex - maxLength + 1;
 
 		return new int[] { startIndex, endIndex };
+
 	}
 }
