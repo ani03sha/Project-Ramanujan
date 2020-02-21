@@ -1,6 +1,3 @@
-/**
- * 
- */
 package org.redquark.ramanujan.ps.arrays;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -8,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author aniru
+ * @author Anirudh Sharma
  *
  */
 class Arrays011_MergeTwoArraysTest {

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package org.redquark.ramanujan.ps.arrays;
 
 /**
